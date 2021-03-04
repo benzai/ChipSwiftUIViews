@@ -6,8 +6,16 @@ import SwiftUI
 /// UISearchBar SwiftUI wrapper.
 ///
 public struct SearchBar: UIViewRepresentable {
-  @Binding var text: String
-  var placeholder: String = ""
+  @Binding private var text: String
+  private var placeholder: String = ""
+
+  public init(
+    text: Binding<String>,
+    placeholder: String
+  ) {
+    self._text = text
+    self.placeholder = placeholder
+  }
 
   public func makeUIView(context: Context) -> UISearchBar {
     let searchBar = UISearchBar(frame: .zero)
