@@ -5,11 +5,11 @@ import SwiftUI
 /// SearchBar
 /// UISearchBar SwiftUI wrapper.
 ///
-struct SearchBar: UIViewRepresentable {
+public struct SearchBar: UIViewRepresentable {
   @Binding var text: String
   var placeholder: String = ""
 
-  func makeUIView(context: Context) -> UISearchBar {
+  public func makeUIView(context: Context) -> UISearchBar {
     let searchBar = UISearchBar(frame: .zero)
     searchBar.delegate = context.coordinator
     searchBar.searchBarStyle = .minimal
@@ -18,24 +18,24 @@ struct SearchBar: UIViewRepresentable {
     return searchBar
   }
 
-  func updateUIView(_ uiView: UISearchBar, context: Context) {
+  public func updateUIView(_ uiView: UISearchBar, context: Context) {
     uiView.text = text
   }
 
-  func makeCoordinator() -> Coordinator {
+  public func makeCoordinator() -> Coordinator {
     Coordinator(self)
   }
 
   // MARK: - Coordinator
 
-  class Coordinator: NSObject, UISearchBarDelegate {
+  public class Coordinator: NSObject, UISearchBarDelegate {
     private let parent: SearchBar
 
     init(_ parent: SearchBar) {
       self.parent = parent
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
       parent.text = searchText
     }
   }
