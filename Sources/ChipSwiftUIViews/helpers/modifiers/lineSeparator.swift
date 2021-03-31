@@ -21,7 +21,7 @@ public struct FrameDecorationViewMod: ViewModifier {
     self.offset = offset
   }
 
-  func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
     ZStack(alignment: .bottomLeading) {
       content
       Rectangle()
@@ -35,7 +35,7 @@ public struct FrameDecorationViewMod: ViewModifier {
 
 public extension View {
   /// Creates a bottom separator. You can use this for list items.
-  func lineSeparator(size: CGFloat = 1,
+  public func lineSeparator(size: CGFloat = 1,
                      color: Color = .black,
                      opacity: Double = 0.1,
                      offset: CGFloat = 0) -> some View

@@ -4,7 +4,7 @@ import SwiftUI
 /// Column
 /// HStack with a default spacing of 0.
 ///
-struct Column<Content>: View where Content: View {
+public struct Column<Content>: View where Content: View {
   private let alignment: VerticalAlignment
   private let spacing: CGFloat
   private let content: Content

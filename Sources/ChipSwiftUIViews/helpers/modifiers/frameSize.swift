@@ -10,7 +10,7 @@ public struct FrameSizeViewMod: ViewModifier {
     self.size = size
   }
 
-  func body(content: Content) -> some View {
+  public func body(content: Content) -> some View {
     content
       .frame(width: size, height: size)
   }
@@ -18,7 +18,7 @@ public struct FrameSizeViewMod: ViewModifier {
 
 public extension View {
   /// Set the frame width and height to the same value.
-  func frameSize(_ size: CGFloat) -> some View {
+  public func frameSize(_ size: CGFloat) -> some View {
     modifier(FrameSizeViewMod(size))
   }
 }

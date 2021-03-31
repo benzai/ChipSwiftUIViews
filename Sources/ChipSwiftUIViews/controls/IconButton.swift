@@ -3,10 +3,10 @@ import SwiftUI
 ///
 /// IconButton
 ///
-struct IconButton: View {
-  typealias InputSize = AppTheme.InputSize
-  typealias IconSize = AppTheme.IconSize
-  typealias OnTap = () -> Void
+public struct IconButton: View {
+  public typealias InputSize = AppTheme.InputSize
+  public typealias IconSize = AppTheme.IconSize
+  public typealias OnTap = () -> Void
   private let iconImage: String
   private let frameSize: InputSize
   private let frameColor: Color
@@ -14,7 +14,7 @@ struct IconButton: View {
   private let iconColor: Color
   private let onTap: OnTap?
 
-  init(
+  public init(
     _ iconImage: String,
     frameSize: InputSize = .md,
     frameColor: Color = .black,
@@ -30,7 +30,7 @@ struct IconButton: View {
     self.onTap = onTap
   }
 
-  var body: some View {
+  public var body: some View {
     Column {
       Image(iconImage)
         .resizable()
