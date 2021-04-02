@@ -2,10 +2,10 @@ import SwiftUI
 import Combine
 
 ///
-/// ChipAppTheme
+/// AppTheme
 /// - Pass a ColorTheme struct into the init to customize the theme.
 ///
-open class ChipAppTheme: ObservableObject {
+public class AppTheme: ObservableObject {
   private var subs = Set<AnyCancellable>()
 
   // State

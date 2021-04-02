@@ -1,13 +1,20 @@
 import SwiftUI
 
+public typealias ColorTint = AppThemeConfig.ColorTint
+public typealias FontWeight = AppThemeConfig.FontWeight
+public typealias FontSize = AppThemeConfig.FontSize
+public typealias InputSize = AppThemeConfig.InputSize
+public typealias Roundness = AppThemeConfig.Roundness
+public typealias IconSize = AppThemeConfig.IconSize
+
 /**
  Copy this extension, AppFontModifier and the appFont
  extensions to your app to customize the theme.
  Rename the extension to the theme class of your app.
  */
-public extension ChipAppTheme {
+public struct AppThemeConfig {
   /// ColorTint
-  enum ColorTint {
+  public enum ColorTint {
     case accent1
     case accent2
     case text1
@@ -53,7 +60,7 @@ public extension ChipAppTheme {
   }
 
   /// FontWeight
-  enum FontWeight: String {
+  public enum FontWeight: String {
     case regular
     case medium
     case bold
@@ -78,7 +85,7 @@ public extension ChipAppTheme {
   }
 
   /// FontSize
-  enum FontSize: CaseIterable {
+  public enum FontSize: CaseIterable {
     /// 48
     case xl
     /// 40
@@ -120,7 +127,7 @@ public extension ChipAppTheme {
   }
 
   /// InputSize
-  enum InputSize {
+  public enum InputSize {
     case xs
     case sm
     case md
@@ -141,7 +148,7 @@ public extension ChipAppTheme {
   }
 
   /// Roundness
-  enum Roundness {
+  public enum Roundness {
     case sm
     case md
     case lg
@@ -160,7 +167,7 @@ public extension ChipAppTheme {
   }
 
   /// IconSize
-  enum IconSize {
+  public enum IconSize {
     case xs
     case sm
     case md
@@ -181,14 +188,6 @@ public extension ChipAppTheme {
   }
 }
 
-/**
- AppFontModifier
- Change the typealias values to the theme class of your app.
- */
-typealias ColorTint = ChipAppTheme.ColorTint
-typealias FontWeight = ChipAppTheme.FontWeight
-typealias FontSize = ChipAppTheme.FontSize
-
 struct AppFontModifier: ViewModifier {
   let weight: FontWeight
   let size: FontSize
@@ -196,7 +195,7 @@ struct AppFontModifier: ViewModifier {
   let lineSpacing: CGFloat
   let isSystem: Bool
 
-  init(
+  public init(
     weight: FontWeight = .regular,
     size: FontSize,
     color: ColorTint,

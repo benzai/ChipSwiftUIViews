@@ -4,8 +4,6 @@ import SwiftUI
 /// ClassicButton
 ///
 public struct ClassicButton: View {
-  public typealias InputSize = ChipAppTheme.InputSize
-  public typealias Roundness = ChipAppTheme.Roundness
   public typealias OnTap = () -> Void
   private let title: String
   private let frameSize: InputSize
