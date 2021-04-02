@@ -4,8 +4,8 @@ import SwiftUI
 /// IconButton
 ///
 public struct IconButton: View {
-  public typealias InputSize = AppTheme.InputSize
-  public typealias IconSize = AppTheme.IconSize
+  public typealias InputSize = ChipAppTheme.InputSize
+  public typealias IconSize = ChipAppTheme.IconSize
   public typealias OnTap = () -> Void
   private let iconImage: String
   private let frameSize: InputSize

@@ -4,8 +4,8 @@ import SwiftUI
 /// IconFrame
 ///
 public struct IconFrame: View {
-  public typealias InputSize = AppTheme.InputSize
-  public typealias IconSize = AppTheme.IconSize
+  public typealias InputSize = ChipAppTheme.InputSize
+  public typealias IconSize = ChipAppTheme.IconSize
   private let iconImage: String
   private let frameSize: InputSize
   private let frameColor: Color
