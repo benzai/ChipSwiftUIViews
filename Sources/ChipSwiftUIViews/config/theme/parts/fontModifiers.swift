@@ -3,6 +3,7 @@ import SwiftUI
 // MARK: - Font Modifiers
 
 public struct AppFontModifier: ViewModifier {
+  let context: AppTheme
   let weight: FontWeight
   let size: FontSize
   let color: ColorTint
@@ -10,12 +11,14 @@ public struct AppFontModifier: ViewModifier {
   let isSystem: Bool
 
   public init(
+    context: AppTheme,
     weight: FontWeight = .regular,
     size: FontSize,
     color: ColorTint,
     lineSpacing: CGFloat = 1,
     isSystem: Bool = false
   ) {
+    self.context = context
     self.weight = weight
     self.size = size
     self.color = color
@@ -24,9 +27,9 @@ public struct AppFontModifier: ViewModifier {
   }
 
   public func body(content: Content) -> some View {
-    let _weight = AppThemeBuilder.fontWeight(weight: weight)
-    let _size = AppThemeBuilder.fontSize(size: size)
-    let _color = AppThemeBuilder.color(color: color)
+    let _weight = AppThemeBuilder.fontWeight(context: context, weight: weight)
+    let _size = AppThemeBuilder.fontSize(context: context, size: size)
+    let _color = AppThemeBuilder.color(context: context, color: color)
 
     return content
       .font(.custom(_weight, size: _size.size))
@@ -37,6 +40,7 @@ public struct AppFontModifier: ViewModifier {
 public extension Text {
   /// Text modifier.
   func appFont(
+    context: AppTheme,
     weight: FontWeight = .regular,
     size: FontSize,
     color: ColorTint,
@@ -44,10 +48,10 @@ public extension Text {
     isKern: Bool = true,
     isSystem: Bool = false
   ) -> some View {
-    let _size = AppThemeBuilder.fontSize(size: size)
+    let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return kerning(isKern && !isSystem ? _size.kerning : 0)
-      .modifier(AppFontModifier(weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
@@ -55,6 +59,7 @@ public extension Text {
 public extension TextField {
   /// TextField modifier.
   func appFont(
+    context: AppTheme,
     weight: FontWeight = .regular,
     size: FontSize,
     color: ColorTint,
@@ -62,10 +67,10 @@ public extension TextField {
     isKern: Bool = true,
     isSystem: Bool = false
   ) -> some View {
-    let _size = AppThemeBuilder.fontSize(size: size)
+    let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return self
-      .modifier(AppFontModifier(weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
@@ -73,6 +78,7 @@ public extension TextField {
 public extension Button {
   /// Button modifier.
   func appFont(
+    context: AppTheme,
     weight: FontWeight = .regular,
     size: FontSize,
     color: ColorTint,
@@ -80,10 +86,10 @@ public extension Button {
     isKern: Bool = true,
     isSystem: Bool = false
   ) -> some View {
-    let _size = AppThemeBuilder.fontSize(size: size)
+    let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return self
-      .modifier(AppFontModifier(weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
@@ -91,6 +97,7 @@ public extension Button {
 public extension View {
   /// View modifier.
   func appFont(
+    context: AppTheme,
     weight: FontWeight = .regular,
     size: FontSize,
     color: ColorTint,
@@ -98,10 +105,10 @@ public extension View {
     isKern: Bool = true,
     isSystem: Bool = false
   ) -> some View {
-    let _size = AppThemeBuilder.fontSize(size: size)
+    let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return self
-      .modifier(AppFontModifier(weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }

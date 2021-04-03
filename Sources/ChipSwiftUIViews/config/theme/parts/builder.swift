@@ -2,9 +2,9 @@ import SwiftUI
 
 // MARK: - AppTheme Builder
 
-struct AppThemeBuilder {
-  static func color(color: ColorTint) -> Color {
-    let colors = AppTheme.shared.colors
+public struct AppThemeBuilder {
+  public static func color(context: AppTheme, color: ColorTint) -> Color {
+    let colors = context.colors
     switch color {
     case .accent1: return colors.accent1
     case .accent2: return colors.accent2
@@ -25,8 +25,8 @@ struct AppThemeBuilder {
     }
   }
 
-  static func fontWeight(weight: FontWeight) -> String {
-    let weights = AppTheme.shared.styles
+  public static func fontWeight(context: AppTheme, weight: FontWeight) -> String {
+    let weights = context.styles
     switch weight {
     case .regular: return weights.fontWeight_regular
     case .medium: return weights.fontWeight_medium
@@ -34,8 +34,10 @@ struct AppThemeBuilder {
     }
   }
 
-  static func fontSize(size: FontSize) -> (size: CGFloat, kerning: CGFloat) {
-    let sizes = AppTheme.shared.styles
+  public static func fontSize(context: AppTheme,
+                              size: FontSize) -> (size: CGFloat, kerning: CGFloat)
+  {
+    let sizes = context.styles
     switch size {
     case .xl: return sizes.fontSize_xl
     case .lg: return sizes.fontSize_lg
