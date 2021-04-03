@@ -51,7 +51,8 @@ public extension Text {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return kerning(isKern && !isSystem ? _size.kerning : 0)
-      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color,
+                                isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
@@ -70,7 +71,8 @@ public extension TextField {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return self
-      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color,
+                                isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
@@ -89,7 +91,8 @@ public extension Button {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return self
-      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color,
+                                isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
@@ -108,7 +111,8 @@ public extension View {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     return self
-      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color, isSystem: isSystem))
+      .modifier(AppFontModifier(context: context, weight: weight, size: size, color: color,
+                                isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
