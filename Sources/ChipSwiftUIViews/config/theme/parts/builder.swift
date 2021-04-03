@@ -52,4 +52,42 @@ public struct AppThemeBuilder {
     case .xs: return sizes.fontSize_xs
     }
   }
+
+  public static func inputSize(context: AppTheme,
+                               size: InputSize) -> CGFloat
+  {
+    let sizes = context.styles
+    switch size {
+    case .xs: return sizes.inputSize_xs
+    case .sm: return sizes.inputSize_sm
+    case .md: return sizes.inputSize_md
+    case .lg: return sizes.inputSize_lg
+    case .xl: return sizes.inputSize_xl
+    }
+  }
+
+  public static func iconSize(context: AppTheme,
+                              size: IconSize) -> CGFloat
+  {
+    let sizes = context.styles
+    switch size {
+    case .xs: return sizes.iconSize_xs
+    case .sm: return sizes.iconSize_sm
+    case .md: return sizes.iconSize_md
+    case .lg: return sizes.iconSize_lg
+    case .xl: return sizes.iconSize_xl
+    }
+  }
+
+  public static func roundness(context: AppTheme,
+                               size: Roundness) -> CGFloat
+  {
+    let sizes = context.styles
+    switch size {
+    case .sm: return sizes.roundness_sm
+    case .md: return sizes.roundness_md
+    case .lg: return sizes.roundness_lg
+    case .full: return sizes.roundness_full
+    }
+  }
 }

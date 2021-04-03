@@ -4,6 +4,8 @@ import SwiftUI
 /// ClassicButton
 ///
 public struct ClassicButton: View {
+  @EnvironmentObject private var theme: AppTheme
+
   public typealias OnTap = () -> Void
   private let title: String
   private let frameSize: InputSize
@@ -26,12 +28,15 @@ public struct ClassicButton: View {
   }
 
   public var body: some View {
-    Button(action: onTap) {
+    let _frameSize = AppThemeBuilder.inputSize(context: theme, size: frameSize)
+    let _roundness = AppThemeBuilder.roundness(context: theme, size: roundness)
+
+    return Button(action: onTap) {
       Text(title)
     }
     .padding(.horizontal, 20)
-    .frame(height: frameSize.value)
+    .frame(height: _frameSize)
     .background(frameColor)
-    .cornerRadius(roundness.value)
+    .cornerRadius(_roundness)
   }
 }

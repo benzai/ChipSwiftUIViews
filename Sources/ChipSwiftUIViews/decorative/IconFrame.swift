@@ -4,6 +4,8 @@ import SwiftUI
 /// IconFrame
 ///
 public struct IconFrame: View {
+  @EnvironmentObject private var theme: AppTheme
+
   private let iconImage: String
   private let frameSize: InputSize
   private let frameColor: Color
@@ -25,14 +27,17 @@ public struct IconFrame: View {
   }
 
   public var body: some View {
-    Column {
+    let _frameSize = AppThemeBuilder.inputSize(context: theme, size: frameSize)
+    let _iconSize = AppThemeBuilder.iconSize(context: theme, size: iconSize)
+
+    return Column {
       Image(iconImage)
         .resizable()
         .renderingMode(.template)
-        .frame(width: iconSize.value, height: iconSize.value)
+        .frameSize(_iconSize)
         .foregroundColor(iconColor)
     }
-    .frameSize(frameSize.value)
+    .frameSize(_frameSize)
     .background(frameColor)
     .clipShape(Circle())
   }

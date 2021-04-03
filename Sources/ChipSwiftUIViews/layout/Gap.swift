@@ -2,6 +2,7 @@ import SwiftUI
 
 ///
 /// HGap
+/// - Horizontal spacer.
 ///
 public struct HGap: View {
   private let space: CGFloat
@@ -17,6 +18,7 @@ public struct HGap: View {
 
 ///
 /// VGap
+/// - Vertical spacer.
 ///
 public struct VGap: View {
   private let space: CGFloat

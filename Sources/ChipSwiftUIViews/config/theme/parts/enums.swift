@@ -42,62 +42,16 @@ public struct AppThemeEnums {
 
   /// InputSize
   public enum InputSize {
-    case xs
-    case sm
-    case md
-    case lg
-    case xl
-    case custom(CGFloat)
-
-    public var value: CGFloat {
-      switch self {
-      case .xs: return 28
-      case .sm: return 32
-      case .md: return 40
-      case .lg: return 48
-      case .xl: return 56
-      case .custom(let custom): return custom
-      }
-    }
+    case xs, sm, md, lg, xl
   }
 
   /// IconSize
   public enum IconSize {
-    case xs
-    case sm
-    case md
-    case lg
-    case xl
-    case custom(CGFloat)
-
-    public var value: CGFloat {
-      switch self {
-      case .xs: return 16
-      case .sm: return 20
-      case .md: return 24
-      case .lg: return 28
-      case .xl: return 32
-      case .custom(let custom): return custom
-      }
-    }
+    case xs, sm, md, lg, xl
   }
 
   /// Roundness
   public enum Roundness {
-    case sm
-    case md
-    case lg
-    case full
-    case custom(CGFloat)
-
-    public var value: CGFloat {
-      switch self {
-      case .sm: return 4
-      case .md: return 8
-      case .lg: return 12
-      case .full: return 100
-      case .custom(let custom): return custom
-      }
-    }
+    case sm, md, lg, full
   }
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 ///
 /// Row
-/// VStack with a default spacing of 0.
+/// - VStack with a default spacing of 0.
 ///
 public struct Row<Content>: View where Content: View {
   private let alignment: HorizontalAlignment

@@ -4,6 +4,8 @@ import SwiftUI
 /// IconButton
 ///
 public struct IconButton: View {
+  @EnvironmentObject private var theme: AppTheme
+
   public typealias OnTap = () -> Void
   private let iconImage: String
   private let frameSize: InputSize
@@ -29,14 +31,17 @@ public struct IconButton: View {
   }
 
   public var body: some View {
-    Column {
+    let _frameSize = AppThemeBuilder.inputSize(context: theme, size: frameSize)
+    let _iconSize = AppThemeBuilder.iconSize(context: theme, size: iconSize)
+
+    return Column {
       Image(iconImage)
         .resizable()
         .renderingMode(.template)
-        .frame(width: iconSize.value, height: iconSize.value)
+        .frameSize(_iconSize)
         .foregroundColor(iconColor)
     }
-    .frameSize(frameSize.value)
+    .frameSize(_frameSize)
     .background(frameColor)
     // TODO: Add other shapes, like rounded rect.
     .clipShape(Circle())
