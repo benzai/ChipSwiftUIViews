@@ -5,6 +5,7 @@ import SwiftUI
 /// Credit: https://www.thetopsites.net/article/58216967.shtml
 ///
 public extension Color {
+  /// Color from HEX string.
   init(_ hex: String) {
     let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
     var int: UInt64 = 0
@@ -28,6 +29,7 @@ public extension Color {
               opacity: Double(a) / 255)
   }
 
+  /// UIColor from Color.
   func uiColor() -> UIColor {
     let components = self.components()
     return UIColor(red: components.r,

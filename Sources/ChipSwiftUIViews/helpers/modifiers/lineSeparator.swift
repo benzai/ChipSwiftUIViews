@@ -35,7 +35,7 @@ public struct FrameDecorationViewMod: ViewModifier {
 
 public extension View {
   /// Creates a bottom separator. You can use this for list items.
-  public func lineSeparator(size: CGFloat = 1,
+  func lineSeparator(size: CGFloat = 1,
                      color: Color = .black,
                      opacity: Double = 0.1,
                      offset: CGFloat = 0) -> some View
