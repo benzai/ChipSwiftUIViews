@@ -39,22 +39,27 @@ public struct AppFontModifier: ViewModifier {
 
 public extension Text {
   /// Text modifier.
+  /// - When isParagraph is false (default) it will set a frame height based on the font size.
   func appFont(
     context: AppTheme,
     size: FontSize,
     color: ColorTint,
     weight: FontWeight = .regular,
+    isParagraph: Bool = false,
     lineSpacing: CGFloat = 1,
     isKern: Bool = true,
     isSystem: Bool = false
   ) -> some View {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
-    return kerning(isKern && !isSystem ? _size.kerning : 0)
+    let base = kerning(isKern && !isSystem ? _size.kerning : 0)
       .modifier(AppFontModifier(context: context, size: size, color: color,
-                                weight: weight,
-                                isSystem: isSystem))
+                                weight: weight, isSystem: isSystem))
+    let paragraph = base
+    let normal = base
       .frame(height: lineSpacing * _size.size)
+
+    return isParagraph ? paragraph.eraseToAnyView() : normal.eraseToAnyView()
   }
 }
 
@@ -73,14 +78,13 @@ public extension TextField {
 
     return self
       .modifier(AppFontModifier(context: context, size: size, color: color,
-                                weight: weight,
-                                isSystem: isSystem))
+                                weight: weight, isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
 
 public extension Button {
-  /// Button modifier.
+  /// Button appFont modifier.
   func appFont(
     context: AppTheme,
     size: FontSize,
@@ -94,29 +98,33 @@ public extension Button {
 
     return self
       .modifier(AppFontModifier(context: context, size: size, color: color,
-                                weight: weight,
-                                isSystem: isSystem))
+                                weight: weight, isSystem: isSystem))
       .frame(height: lineSpacing * _size.size)
   }
 }
 
 public extension View {
-  /// View modifier.
+  /// View appFont modifier.
+  /// - When isParagraph is false (default) it will set a frame height based on the font size.
   func appFont(
     context: AppTheme,
     size: FontSize,
     color: ColorTint,
     weight: FontWeight = .regular,
+    isParagraph: Bool = false,
     lineSpacing: CGFloat = 1,
     isKern: Bool = true,
     isSystem: Bool = false
   ) -> some View {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
-    return self
+    let base = self
       .modifier(AppFontModifier(context: context, size: size, color: color,
-                                weight: weight,
-                                isSystem: isSystem))
+                                weight: weight, isSystem: isSystem))
+    let paragraph = base
+    let normal = base
       .frame(height: lineSpacing * _size.size)
+
+    return isParagraph ? paragraph.eraseToAnyView() : normal.eraseToAnyView()
   }
 }
