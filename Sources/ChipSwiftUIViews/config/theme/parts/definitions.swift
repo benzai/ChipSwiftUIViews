@@ -5,19 +5,26 @@ import SwiftUI
 public protocol AppThemeColors {
   var accent1: Color { get }
   var accent2: Color { get }
+  
   var text1: Color { get }
   var text2: Color { get }
   var text3: Color { get }
   var altText1: Color { get }
   var altText2: Color { get }
   var altText3: Color { get }
+  
   var bg1: Color { get }
   var bg2: Color { get }
   var altBg1: Color { get }
   var altBg2: Color { get }
+  
   var statusPositive: Color { get }
   var statusWarning: Color { get }
   var statusNegative: Color { get }
+  
+  var category1: Color { get }
+  var category2: Color { get }
+  var category3: Color { get }
 }
 
 public protocol AppThemeStyles {

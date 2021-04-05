@@ -25,4 +25,3 @@ public struct Row<Content>: View where Content: View {
     }
   }
 }
-
