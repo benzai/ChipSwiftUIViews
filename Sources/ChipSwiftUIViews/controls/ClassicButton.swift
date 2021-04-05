@@ -25,6 +25,7 @@ public struct ClassicButton: View {
   private let frameColor: Color
   private let textColor: Color
   private let roundness: Roundness
+  private let isStretch: Bool
   private let onTap: OnTap
 
   public init(
@@ -33,6 +34,7 @@ public struct ClassicButton: View {
     frameColor: Color,
     textColor: Color,
     roundness: Roundness = .md,
+    isStretch: Bool = false,
     onTap: @escaping OnTap
   ) {
     self.title = title
@@ -40,6 +42,7 @@ public struct ClassicButton: View {
     self.frameColor = frameColor
     self.textColor = textColor
     self.roundness = roundness
+    self.isStretch = isStretch
     self.onTap = onTap
   }
 
@@ -50,6 +53,7 @@ public struct ClassicButton: View {
       Text(title)
         .appFont(context: theme, size: size.value.textSize, color: .custom(textColor))
         .padding(.horizontal, size.value.sidePadding)
+        .frame(maxWidth: isStretch ? .infinity : nil)
         .frame(height: size.value.frameHeight)
     }
     .background(frameColor)
