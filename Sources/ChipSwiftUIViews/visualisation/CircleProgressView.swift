@@ -4,20 +4,20 @@ import SwiftUI
 /// CircularProgressView
 ///
 public struct CircularProgressView: View {
-  private var progress: Float
+  @Binding private var progress: Float
   private let frameSize: CGFloat
   private let lineWidth: CGFloat
   private let baseColor: Color
   private let progressColor: Color
 
   public init(
-    progress: Float,
+    progress: Binding<Float>,
     frameSize: CGFloat = 40,
     lineWidth: CGFloat = 4,
     baseColor: Color = .gray,
     progressColor: Color = .blue
   ) {
-    self.progress = progress
+    _progress = progress
     self.frameSize = frameSize
     self.lineWidth = lineWidth
     self.baseColor = baseColor
