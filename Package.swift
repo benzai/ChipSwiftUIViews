@@ -20,9 +20,9 @@ let package = Package(
       dependencies: [
       ]
     ),
-    .testTarget(
-      name: "ChipSwiftUIViewsTests",
-      dependencies: ["ChipSwiftUIViews"]
-    ),
+//    .testTarget(
+//      name: "ChipSwiftUIViewsTests",
+//      dependencies: ["ChipSwiftUIViews"]
+//    ),
   ]
 )

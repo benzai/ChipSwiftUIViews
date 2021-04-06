@@ -42,7 +42,7 @@ public struct AppThemeEnums {
 
   /// InputSize
   public enum InputSize {
-    case xs, sm, md, lg, xl
+    case xs, sm, md, lg, xl, custom(CGFloat)
   }
 
   /// IconSize

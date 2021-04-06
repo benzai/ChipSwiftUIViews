@@ -18,6 +18,10 @@ public struct DefaultThemeColors: AppThemeColors {
   public var statusPositive: Color { Color("#51D191") }
   public var statusWarning: Color { Color("#FF5901") }
   public var statusNegative: Color { Color("#FF5959") }
+
+  public var category1: Color { Color("#4285F4") }
+  public var category2: Color { Color("#F4B400") }
+  public var category3: Color { Color("#0F9D58") }
 }
 
 public struct DefaultThemeStyles: AppThemeStyles {

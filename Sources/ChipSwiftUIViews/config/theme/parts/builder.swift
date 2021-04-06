@@ -63,6 +63,7 @@ public struct AppThemeBuilder {
     case .md: return sizes.inputSize_md
     case .lg: return sizes.inputSize_lg
     case .xl: return sizes.inputSize_xl
+    case .custom(let custom): return custom
     }
   }
 
