@@ -10,24 +10,27 @@ public struct Tabs: View {
 
   @Binding private var activeIndex: Int
   private let items: [TabItem]
+  private let baseColor: Color
+  private let padding: CGFloat
   private let spacing: CGFloat
   private let roundness: Roundness
-  private let baseColor: Color
   private let onTap: OnTap
 
   public init(
     activeIndex: Binding<Int>,
     items: [TabItem],
     baseColor: Color,
-    roundness: Roundness = .md,
+    padding: CGFloat = 10,
     spacing: CGFloat = 6,
+    roundness: Roundness = .md,
     onTap: @escaping OnTap
   ) {
     _activeIndex = activeIndex
     self.items = items
     self.baseColor = baseColor
-    self.roundness = roundness
+    self.padding = padding
     self.spacing = spacing
+    self.roundness = roundness
     self.onTap = onTap
   }
 
@@ -40,7 +43,7 @@ public struct Tabs: View {
             ClassicButton(
               item.title,
               frameColor: baseColor,
-              textColor: theme.colors.altText1,
+              textColor: .white,
               roundness: roundness
             ) {
               print("Already current active index.")
@@ -56,10 +59,11 @@ public struct Tabs: View {
               activeIndex = index
               onTap(index)
             }
+            .buttonStyle(PlainButtonStyle())
           }
         }
       }
-      .padding(10)
+      .padding(padding)
     }
     .frame(maxWidth: .infinity, alignment: .leading)
   }
