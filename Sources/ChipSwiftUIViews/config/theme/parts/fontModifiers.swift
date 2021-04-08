@@ -83,6 +83,26 @@ public extension TextField {
   }
 }
 
+public extension TextEditor {
+  /// TextField modifier.
+  func appFont(
+    context: AppTheme,
+    size: FontSize,
+    color: ColorTint,
+    weight: FontWeight = .regular,
+    lineSpacing: CGFloat = 1,
+    isKern: Bool = true,
+    isSystem: Bool = false
+  ) -> some View {
+    let _size = AppThemeBuilder.fontSize(context: context, size: size)
+
+    return self
+      .modifier(AppFontModifier(context: context, size: size, color: color,
+                                weight: weight, isSystem: isSystem))
+      .frame(height: lineSpacing * _size.size)
+  }
+}
+
 public extension Button {
   /// Button appFont modifier.
   func appFont(
