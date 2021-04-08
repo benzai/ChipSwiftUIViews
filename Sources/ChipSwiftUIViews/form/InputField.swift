@@ -8,7 +8,7 @@ import SwiftUI
 public struct InputField: UIViewRepresentable {
   @EnvironmentObject private var theme: AppTheme
 
-  public typealias UIViewType = TextFieldWithPadding
+  public typealias UIViewType = CustomUITextField
 
   // Init
   @Binding private var text: String
@@ -31,6 +31,8 @@ public struct InputField: UIViewRepresentable {
 
     textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     textField.keyboardType = keyboardType
+    textField.autocorrectionType = .no
+    textField.spellCheckingType = .no
 
     textField.placeholder = placeholder
 
@@ -83,8 +85,8 @@ public struct InputField: UIViewRepresentable {
   }
 }
 
-// Credit: Advanced Swift https://www.advancedswift.com/uitextfield-with-padding-swift
-public class TextFieldWithPadding: UITextField {
+/// Credit: Advanced Swift https://www.advancedswift.com/uitextfield-with-padding-swift
+public class CustomUITextField: UITextField {
   public var textPadding = UIEdgeInsets(
     top: 0,
     left: 12,
