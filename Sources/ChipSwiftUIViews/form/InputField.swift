@@ -8,7 +8,7 @@ import SwiftUI
 public struct InputField: UIViewRepresentable {
   @EnvironmentObject private var theme: AppTheme
 
-  public typealias UIViewType = CustomUITextField
+  public typealias ViewType = CustomUITextField
 
   // Init
   @Binding private var text: String
@@ -25,8 +25,8 @@ public struct InputField: UIViewRepresentable {
     self.keyboardType = keyboardType
   }
 
-  public func makeUIView(context: Context) -> UIViewType {
-    let textField = UIViewType(frame: .zero)
+  public func makeUIView(context: Context) -> ViewType {
+    let textField = ViewType(frame: .zero)
     textField.delegate = context.coordinator
 
     textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -51,12 +51,12 @@ public struct InputField: UIViewRepresentable {
     return textField
   }
 
-  public func updateUIView(_ uiView: UIViewType, context: Context) {
+  public func updateUIView(_ uiView: ViewType, context: Context) {
     uiView.text = text
   }
 
   public func makeCoordinator() -> Coordinator {
-    Coordinator(self, theme: theme)
+    Coordinator(parent: self, theme: theme)
   }
 
   // Coordinator
@@ -66,9 +66,13 @@ public struct InputField: UIViewRepresentable {
     private let parent: Parent
     private let theme: AppTheme
 
-    public init(_ parent: Parent, theme: AppTheme) {
+    public init(parent: Parent, theme: AppTheme) {
       self.parent = parent
       self.theme = theme
+    }
+
+    public func textFieldDidChangeSelection(_ textField: UITextField) {
+      parent.$text.wrappedValue = textField.text ?? ""
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
