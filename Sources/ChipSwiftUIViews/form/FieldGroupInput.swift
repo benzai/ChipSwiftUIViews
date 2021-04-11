@@ -30,9 +30,9 @@ public struct FieldGroupInput: View {
   public var body: some View {
     Row {
       Text(label)
-        .appFont(context: theme, size: .md2, color: .text2)
+        .appFont(context: theme, size: .md3, color: .text2)
       VGap(4)
-      InputField(text: $value, styleType: styleType)
+      InputField(text: $value, placeholder: placeholder, styleType: styleType)
         .frame(height: 36)
     }
     .lineSeparator()

@@ -23,7 +23,7 @@ public struct InputField: UIViewRepresentable {
 
   public init(
     text: Binding<String>,
-    placeholder: String = "",
+    placeholder: String,
     styleType: StyleType = .classic,
     keyboardType: UIKeyboardType = .default
   ) {

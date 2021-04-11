@@ -33,7 +33,7 @@ public struct FieldGroupText: View {
   public var body: some View {
     Row {
       Text(label)
-        .appFont(context: theme, size: .md2, color: .text2)
+        .appFont(context: theme, size: .md3, color: .text2)
       VGap(4)
       TextArea(text: $value, styleType: styleType, keyboardType: keyboardType) {}
         .frame(height: frameHeight)
