@@ -10,7 +10,6 @@ public struct TextArea: UIViewRepresentable {
 
   public typealias ViewType = UITextView
 
-  // Init
   @Binding var text: String
   private let keyboardType: UIKeyboardType
   private let textDidChange: (ViewType) -> Void

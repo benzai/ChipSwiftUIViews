@@ -1,6 +1,12 @@
 import UIKit
 import SwiftUI
 
+public extension InputField {
+  enum StyleType {
+    case classic, modern
+  }
+}
+
 ///
 /// InputField
 /// - UITextField wrapper with custom padding.
@@ -10,18 +16,20 @@ public struct InputField: UIViewRepresentable {
 
   public typealias ViewType = CustomUITextField
 
-  // Init
   @Binding private var text: String
   private let placeholder: String
+  private let styleType: StyleType
   private let keyboardType: UIKeyboardType
 
   public init(
     text: Binding<String>,
     placeholder: String = "",
+    styleType: StyleType = .classic,
     keyboardType: UIKeyboardType = .default
   ) {
     self._text = text
     self.placeholder = placeholder
+    self.styleType = styleType
     self.keyboardType = keyboardType
   }
 
@@ -41,14 +49,27 @@ public struct InputField: UIViewRepresentable {
       size: theme.styles.fontSize_md2.size
     )
     textField.textColor = UIColor(theme.colors.text1)
-    textField.layer.cornerRadius = 8
-    textField.clipsToBounds = true
 
-    textField.layer.borderWidth = 1
-    textField.layer.borderColor = Color.black.opacity(0.05).cgColor
-    textField.backgroundColor = UIColor(theme.colors.text3.opacity(0.1))
+    setupView(styleType: styleType, textField: textField)
 
     return textField
+  }
+
+  func setupView(styleType: StyleType, textField: ViewType) {
+    switch styleType {
+    case .classic:
+      textField.textPadding = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+
+      textField.layer.cornerRadius = 8
+      textField.clipsToBounds = true
+
+      textField.layer.borderWidth = 1
+      textField.layer.borderColor = Color.black.opacity(0.05).cgColor
+      textField.backgroundColor = UIColor(theme.colors.text3.opacity(0.1))
+
+    case .modern:
+      textField.textPadding = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+    }
   }
 
   public func updateUIView(_ uiView: ViewType, context: Context) {
@@ -75,17 +96,17 @@ public struct InputField: UIViewRepresentable {
       parent.$text.wrappedValue = textField.text ?? ""
     }
 
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
-      textField.layer.borderWidth = 2
-      textField.layer.borderColor = UIColor(theme.colors.accent1.opacity(0.6)).cgColor
-      textField.backgroundColor = UIColor(theme.colors.bg1)
-    }
-
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-      textField.layer.borderWidth = 1
-      textField.layer.borderColor = Color.black.opacity(0.05).cgColor
-      textField.backgroundColor = UIColor(theme.colors.text3.opacity(0.1))
-    }
+//    public func textFieldDidBeginEditing(_ textField: UITextField) {
+//      textField.layer.borderWidth = 2
+//      textField.layer.borderColor = UIColor(theme.colors.accent1.opacity(0.6)).cgColor
+//      textField.backgroundColor = UIColor(theme.colors.bg1)
+//    }
+//
+//    public func textFieldDidEndEditing(_ textField: UITextField) {
+//      textField.layer.borderWidth = 1
+//      textField.layer.borderColor = Color.black.opacity(0.05).cgColor
+//      textField.backgroundColor = UIColor(theme.colors.text3.opacity(0.1))
+//    }
   }
 }
 

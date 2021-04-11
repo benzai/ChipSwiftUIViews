@@ -64,7 +64,7 @@ public struct FrameListItemMod: ViewModifier {
 public extension View {
   /// Set the frame to appear like a list item.
   func frameListItem(
-    height: CGFloat?,
+    height: CGFloat? = nil,
     lineStyle: FrameListItemMod.LineStyle = .solid,
     lineWidth: CGFloat = 1,
     lineColor: Color = Color.black.opacity(0.15),
