@@ -1,31 +1,28 @@
 import SwiftUI
 
 ///
-/// FieldGroupText
-/// - Multi line text.
+/// FieldGroupInput
+/// - Single line text.
 ///
-public struct FieldGroupText: View {
+public struct FieldGroupInput: View {
   @EnvironmentObject private var theme: AppTheme
 
   @Binding private var value: String
   private let label: String
   private let placeholder: String
-  private let frameHeight: CGFloat
-  private let styleType: TextArea.StyleType
+  private let styleType: InputField.StyleType
   private let keyboardType: UIKeyboardType
 
   public init(
     value: Binding<String>,
     label: String,
     placeholder: String,
-    frameHeight: CGFloat,
-    styleType: TextArea.StyleType = .classic,
+    styleType: InputField.StyleType = .classic,
     keyboardType: UIKeyboardType = .default
   ) {
     self._value = value
     self.label = label
     self.placeholder = placeholder
-    self.frameHeight = frameHeight
     self.styleType = styleType
     self.keyboardType = keyboardType
   }
@@ -35,8 +32,8 @@ public struct FieldGroupText: View {
       Text(label)
         .appFont(context: theme, size: .md2, color: .text2)
       VGap(4)
-      TextArea(text: $value, styleType: styleType, keyboardType: keyboardType) {}
-        .frame(height: frameHeight)
+      InputField(text: $value, styleType: styleType)
+        .frame(height: 36)
     }
     .lineSeparator()
     .padding(.top, 6)
