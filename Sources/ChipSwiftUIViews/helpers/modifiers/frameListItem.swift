@@ -54,7 +54,7 @@ public struct FrameListItemMod: ViewModifier {
       .strokeBorder(
         style: StrokeStyle(
           lineWidth: lineWidth,
-          dash: [4]
+          dash: [3]
         )
       )
       .foregroundColor(lineColor)

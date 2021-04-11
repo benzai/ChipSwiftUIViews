@@ -40,7 +40,7 @@ public struct TextArea: UIViewRepresentable {
       size: theme.styles.fontSize_md2.size
     )
     textView.textColor = UIColor(theme.colors.text1)
-    textView.layer.cornerRadius = 12
+    textView.layer.cornerRadius = 8
     textView.clipsToBounds = true
 
     textView.layer.borderWidth = 1
