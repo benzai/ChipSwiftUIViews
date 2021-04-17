@@ -53,6 +53,7 @@ public extension Text {
     let _size = AppThemeBuilder.fontSize(context: context, size: size)
 
     let base = kerning(isKern && !isSystem ? _size.kerning : 0)
+      .lineSpacing(lineSpacing)
       .modifier(AppFontModifier(context: context, size: size, color: color,
                                 weight: weight, isSystem: isSystem))
     let paragraph = base
