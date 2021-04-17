@@ -67,7 +67,7 @@ public extension View {
     height: CGFloat? = nil,
     lineStyle: FrameListItemMod.LineStyle = .solid,
     lineWidth: CGFloat = 1,
-    lineColor: Color = Color.black.opacity(0.15),
+    lineColor: Color = Color.black.opacity(0.1),
     sidePadding: CGFloat = 10,
     roundness: CGFloat = 8
   ) -> some View {

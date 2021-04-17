@@ -68,7 +68,7 @@ public struct InputField: UIViewRepresentable {
       textField.backgroundColor = UIColor(theme.colors.text3.opacity(0.1))
 
     case .modern:
-      textField.textPadding = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+      textField.textPadding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
   }
 
